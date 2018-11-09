@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.6.0",
+    "libraryName": "sp-fx-rest-api-tutorial",
+    "libraryId": "7073a049-af95-401d-87f6-3b8235092a4d",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

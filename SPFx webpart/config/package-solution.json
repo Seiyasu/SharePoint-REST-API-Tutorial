@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sp-fx-rest-api-tutorial-client-side-solution",
+    "id": "7073a049-af95-401d-87f6-3b8235092a4d",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/sp-fx-rest-api-tutorial.sppkg"
+  }
+}
