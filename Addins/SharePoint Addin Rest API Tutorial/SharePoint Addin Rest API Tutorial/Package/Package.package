@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="1bf27a70-308f-4131-9eef-b6b3bf1f56b0" 
+        solutionId="1bf27a70-308f-4131-9eef-b6b3bf1f56b0" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="SharePoint_Addin_Rest_API_Tutorial"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="63a86b31-e92e-4336-b7e6-7d2ca57a0d39" />
+  </features>
+</package>
