@@ -45,6 +45,16 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<
         </div>
       </div>`;
 
+      // To test the SharePoint REST API, please use this link below to test it:
+      // https://your-sharepoint-site-url/_layouts/workbench.aspx
+      this.getRequestHttpRequest();
+
+  }
+
+  // **********************  REST API Start **********************
+  // Get Request
+  private getRequestHttpRequest(): void {
+
     const spHttpClient: SPHttpClient = this.context.spHttpClient;
     const currentWebUrl: string = this.context.pageContext.web.absoluteUrl;
 
@@ -87,7 +97,14 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<
           console.log(userProfileProps.DisplayName);
         });
       });
-  }
+  } 
+
+
+  // **********************  REST API End **********************
+
+  // **********************  PnP JS Start **********************
+
+  // **********************  PnP JS End **********************
 
   protected get dataVersion(): Version {
     return Version.parse("1.0");
