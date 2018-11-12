@@ -16,6 +16,7 @@ import {
   ISPHttpClientConfiguration
 } from "@microsoft/sp-http";
 import { IODataUser, IODataWeb } from "@microsoft/sp-odata-types";
+import pnp from 'sp-pnp-js';
 
 export interface IHelloWorldWebPartProps {
   description: string;
@@ -45,16 +46,16 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<
         </div>
       </div>`;
 
-      // To test the SharePoint REST API, please use this link below to test it:
-      // https://your-sharepoint-site-url/_layouts/workbench.aspx
-      this.getRequestHttpRequest();
+    // To test the SharePoint REST API, please use this link below to test it:
+    // https://your-sharepoint-site-url/_layouts/workbench.aspx
 
+    // this.getRequestHttpRequest();
+    this.getRequestPnp();
   }
 
   // **********************  REST API Start **********************
   // Get Request
   private getRequestHttpRequest(): void {
-
     const spHttpClient: SPHttpClient = this.context.spHttpClient;
     const currentWebUrl: string = this.context.pageContext.web.absoluteUrl;
 
@@ -76,7 +77,9 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<
       )
       .then((response: SPHttpClientResponse) => {
         response.json().then((user: IODataUser) => {
-          console.log("*******************This is login name*******************");
+          console.log(
+            "*******************This is login name*******************"
+          );
           console.log(user.LoginName);
           console.log("*******************This is email*******************");
           console.log(user.Email);
@@ -91,19 +94,37 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<
       )
       .then((response: SPHttpClientResponse) => {
         response.json().then((userProfileProps: any) => {
-          console.log("*******************This is user profile*******************");
+          console.log(
+            "*******************This is user profile*******************"
+          );
           console.log(userProfileProps);
-          console.log("*******************This is user display name*******************");
+          console.log(
+            "*******************This is user display name*******************"
+          );
           console.log(userProfileProps.DisplayName);
         });
       });
-  } 
-
+  }
 
   // **********************  REST API End **********************
 
   // **********************  PnP JS Start **********************
+  // To use PnP js, please install sp-pnp-js first
+  // npm install sp-pnp-js --save
 
+  private getRequestPnp(): void {
+    let html: string;
+    // Binding the element in the render
+    // e.g. <p id="webinfo"></p>
+    // const element: Element = this.domElement.querySelector("#webinfo");
+    pnp.sp.web.get().then((response) => {
+      html += response.Title;
+      // element.innerHTML = html;
+      console.log(response);
+      console.log("The SharePoint Site title is: "+ response.Title);
+      console.log("The SharePoint Site url is: "+ response.Url);
+    });
+  }
   // **********************  PnP JS End **********************
 
   protected get dataVersion(): Version {
